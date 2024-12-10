@@ -1,0 +1,10 @@
+.tile {
+  width: 328px;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.tile-label {
+  display: flex;
+}
