@@ -2,9 +2,96 @@
   width: 328px;
   display: flex;
   justify-content: center;
-  background-color: #fff;
+  flex-direction: column;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: center;
+  line-height: 35px;
 }
 
 .tile-label {
+  height: 40px;
   display: flex;
+  justify-content: space-between;
+  align-items: top;
+}
+
+.tile-label__number {
+  width: 103px;
+  margin: 0;
+  border-radius: 16px 0 16px 0;
+  color: #ffffff;
+  /* move to common classes styles */
+  font-weight: 500;
+}
+
+.tile-label__status {
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.tile-content {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 16px;
+}
+
+.tile-content__captions {
+  text-align: left;
+}
+
+.tile-content__data {
+  width: 182px;
+  text-align: left;
+}
+
+.tile-delimiter {
+  width: 100%;
+  border: 1px solid #dbdbdb;
+  border-radius: 25px;
+}
+
+.tile-text {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.tile-text__content {
+  text-align: left;
+  margin: 0;
+  max-height: calc(3 * 2.5em);
+  overflow: hidden;
+}
+
+.tile-text__content.folded::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.5em; /* Высота одной строки текста */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  ); /* Градиент */
+}
+
+.tile-text__content.unfolded {
+  max-height: none; /* Развернуть текст полностью */
+}
+
+.tile-expand__button {
+  position: relative;
+  bottom: 15px;
+  color: #e95721;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.tile-expand__button.unfolded {
+  margin-top: 20px;
 }

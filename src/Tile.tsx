@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import gearIcon from './assets/gear.svg'
+import { formatNumberWithSpaces, setStatusColor } from './utils'
 import './Tile.css'
 
 const Tile = () => {
@@ -7,7 +8,7 @@ const Tile = () => {
   const [isFolded, setIsFolded] = useState(true)
 
   useEffect(() => {
-    fetch('../public/applicationData.json')
+    fetch('../applicationData.json')
       .then((response) => response.json())
       .then((data) => {
         setApplicationData(data)
@@ -35,28 +36,65 @@ const Tile = () => {
     } = applicationData
     return (
       <div className="tile">
-        <p className="tile-label">
-          № {number}
-          <span>{status[0]}</span>
+        <div className="tile-label">
+          <p style={{ display: 'flex', margin: 0 }}>
+            <span
+              className="tile-label__number"
+              style={{ backgroundColor: `${setStatusColor(status[0])}` }}
+            >
+              № {formatNumberWithSpaces(number)}
+            </span>
+            <span className="tile-label__status">{status[0]}</span>
+          </p>
           {isTechnological && (
-            <img src={gearIcon} width={20} height={20} alt="gear" />
+            <img
+              style={{ alignSelf: 'center', marginRight: '8px' }}
+              src={gearIcon}
+              width={20}
+              height={20}
+              alt="gear"
+            />
           )}
-        </p>
-        <div>
-          <p>Создана: {creation_date}</p>
-          <p>Контроль: {check_date}</p>
-          <p>Выполнена: {execution_date}</p>
-          <p>
-            Система: {system} | {type}
-          </p>
-          <p>
-            Объект: {name}, {city}, {street}
-          </p>
-          <hr />
-          <div>{text}</div>
+        </div>
+        <div className="tile-content">
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div className="tile-content__captions">
+              <p>Создана:</p>
+              {execution_date ? <p>Выполнена:</p> : <p>Контроль:</p>}
+              <p>Система:</p>
+              <p>Объект:</p>
+            </div>
+            <div className="tile-content__data">
+              <p>{creation_date}</p>
+              {execution_date ? <p>{execution_date}</p> : <p>{check_date}</p>}
+              <p>
+                {system} | {type}
+              </p>
+              <p>
+                {name}, {city}, {street}
+              </p>
+            </div>
+          </div>
+
+          <hr className="tile-delimiter" />
+          <div className="tile-text">
+            <p
+              className={`tile-text__content ${
+                isFolded ? 'folded' : 'unfolded'
+              }`}
+            >
+              {text}
+            </p>
+          </div>
           {text && (
-            <button type="button" onClick={foldTextSection}>
-              {isFolded ? 'Читать далее' : 'Развернуть'}
+            <button
+              className={
+                'tile-expand__button ' + (isFolded ? 'folded' : 'unfolded')
+              }
+              type="button"
+              onClick={foldTextSection}
+            >
+              {isFolded ? '▾ Читать далее' : '▴ Свернуть'}
             </button>
           )}
         </div>
