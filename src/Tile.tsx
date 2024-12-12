@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gearIcon from './assets/gear.svg'
-import { formatNumberWithSpaces, setStatusColor } from './utils'
+import { formatNumberWithSpaces, formatDate, setStatusColor } from './utils'
 import './Tile.css'
 
 const Tile = () => {
+  const textContentRef = useRef(null)
   const [applicationData, setApplicationData] = useState(null)
+  const [isTextOverlap, setIsTextOverlap] = useState(false)
   const [isFolded, setIsFolded] = useState(true)
 
   useEffect(() => {
@@ -12,10 +14,17 @@ const Tile = () => {
       .then((response) => response.json())
       .then((data) => {
         setApplicationData(data)
-        setIsFolded(data?.text?.length > 100)
       })
       .catch((error) => console.log(error))
   }, [])
+
+  useEffect(() => {
+    if (textContentRef.current) {
+      const { scrollHeight, clientHeight } = textContentRef.current
+      setIsTextOverlap(scrollHeight > clientHeight)
+      setIsFolded(scrollHeight > clientHeight)
+    }
+  }, [applicationData])
 
   const foldTextSection = () => setIsFolded(!isFolded)
 
@@ -29,6 +38,7 @@ const Tile = () => {
       execution_date,
       system,
       type,
+      object,
       object: { name, city, street },
       text,
       status,
@@ -65,13 +75,17 @@ const Tile = () => {
               <p>Объект:</p>
             </div>
             <div className="tile-content__data">
-              <p>{creation_date}</p>
-              {execution_date ? <p>{execution_date}</p> : <p>{check_date}</p>}
+              <p>{formatDate(creation_date, execution_date)}</p>
+              {execution_date ? (
+                <p>{formatDate(execution_date)}</p>
+              ) : (
+                <p>{formatDate(check_date)}</p>
+              )}
+              <p>{system && type ? `${system} | ${type}` : ''}</p>
               <p>
-                {system} | {type}
-              </p>
-              <p>
-                {name}, {city}, {street}
+                {Object.keys(object).length > 0
+                  ? `${name}, ${city}, ${street}`
+                  : ''}
               </p>
             </div>
           </div>
@@ -79,6 +93,7 @@ const Tile = () => {
           <hr className="tile-delimiter" />
           <div className="tile-text">
             <p
+              ref={textContentRef}
               className={`tile-text__content ${
                 isFolded ? 'folded' : 'unfolded'
               }`}
@@ -86,7 +101,7 @@ const Tile = () => {
               {text}
             </p>
           </div>
-          {text && (
+          {isTextOverlap && (
             <button
               className={
                 'tile-expand__button ' + (isFolded ? 'folded' : 'unfolded')

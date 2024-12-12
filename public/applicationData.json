@@ -1,9 +1,9 @@
 {
   "id": "001",
   "number": 10000,
-  "creation_date": "2023-10-10T14:30:00Z",
-  "check_date": "2023-10-11T09:00:00Z",
-  "execution_date": "2023-10-15T17:45:00Z",
+  "creation_date": "2024-12-12T08:30:36.166Z",
+  "check_date": "2024-12-12T08:30:36.166Z",
+  "execution_date": "2024-12-12T11:30:36.166Z",
   "system": "СКУД",
   "type": "Неисправность",
   "object": {
@@ -11,7 +11,8 @@
     "city": "Минск",
     "street": "пр-т Дзержинского, 104"
   },
-  "text": "После осуществления поиска, внизу под поисковыми полями отображаются результаты поиска в виде списка  виде списка После осуществления поиска, внизу под поисковыми полями отображаются результаты поиска в виде списка  виде спискаПосле осуществления поиска, внизу под поисковыми полями отображаются результаты поиска в виде списка  виде спискаПосле осуществления поиска, внизу под поисковыми полями",
+
+  "text": "aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa",
   "status": ["В работе", "Просрочена", "Есть отзыв", "Выполнена"],
   "isTechnological": true,
   "files": [

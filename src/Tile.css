@@ -6,7 +6,7 @@
   border-radius: 16px;
   background: #ffffff;
   text-align: center;
-  line-height: 35px;
+  line-height: 32px;
 }
 
 .tile-label {
@@ -21,7 +21,6 @@
   margin: 0;
   border-radius: 16px 0 16px 0;
   color: #ffffff;
-  /* move to common classes styles */
   font-weight: 500;
 }
 
@@ -46,6 +45,10 @@
   text-align: left;
 }
 
+.tile-content__data p {
+  min-height: 32px;
+}
+
 .tile-delimiter {
   width: 100%;
   border: 1px solid #dbdbdb;
@@ -56,6 +59,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  word-wrap: break-word;
 }
 
 .tile-text__content {
@@ -71,16 +75,16 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2.5em; /* Высота одной строки текста */
+  height: 2.5em;
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0),
     rgba(255, 255, 255, 1)
-  ); /* Градиент */
+  );
 }
 
 .tile-text__content.unfolded {
-  max-height: none; /* Развернуть текст полностью */
+  max-height: none;
 }
 
 .tile-expand__button {
