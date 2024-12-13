@@ -16,7 +16,7 @@ const countDuration = (
 ): string => {
   const diffInMilliseconds =
     new Date(executionDateString).getTime() - new Date(dateString).getTime()
-  if (diffInMilliseconds) {
+  if (diffInMilliseconds > 0) {
     const diffInDays = Math.floor(diffInMilliseconds / (24 * 3600 * 1000))
     if (diffInDays < 1) {
       const diffInHours = diffInMilliseconds / 60000 / 60
@@ -39,7 +39,6 @@ export const formatDate = (
     formattedDate = `${date.getDate()}.${
       date.getMonth() + 1
     }.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
-
     if (executionDateString) {
       formattedDate = `${formattedDate} ${countDuration(
         dateString,
@@ -50,7 +49,7 @@ export const formatDate = (
   return formattedDate
 }
 
-export const formatNumberWithSpaces = (number: number) => {
+export const formatNumberWithSpaces = (number: number): string => {
   const numberStr = number.toString()
   let formattedNumber = ''
   let count = 0

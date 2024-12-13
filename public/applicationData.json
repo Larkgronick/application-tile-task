@@ -3,7 +3,7 @@
   "number": 10000,
   "creation_date": "2024-12-12T08:30:36.166Z",
   "check_date": "2024-12-12T08:30:36.166Z",
-  "execution_date": "2024-12-12T11:30:36.166Z",
+  "execution_date": "2024-12-15T11:30:36.166Z",
   "system": "СКУД",
   "type": "Неисправность",
   "object": {
@@ -12,8 +12,8 @@
     "street": "пр-т Дзержинского, 104"
   },
 
-  "text": "aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaaa",
-  "status": ["В работе", "Просрочена", "Есть отзыв", "Выполнена"],
+  "text": "После осуществления поиска, внизу под поисковыми полями отображаются результаты поиска в виде списка  виде списка После осуществления поиска, внизу под поисковыми полями отображаются результаты поиска в виде списка  виде спискаПосле осуществления поиска, внизу под поисковыми полями отображаются результаты поиска в виде списка  виде спискаПосле осуществления поиска, внизу под поисковыми полями",
+  "status": "В работе",
   "isTechnological": true,
   "files": [
     "https://example.com/thumbnail1.jpg",
