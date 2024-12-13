@@ -1,50 +1,33 @@
-# React + TypeScript + Vite
+# Mob. плитка заявки
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Исходный код выполнения тестового задания.
+Проект реализован на базе темплейта `react-ts` сборщика `vite`
 
-Currently, two official plugins are available:
+## Инструкция по сборке и запуску
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Для локального тестирования необходимо:
 
-## Expanding the ESLint configuration
+- клонировать данные [репозитория](https://github.com/Larkgronick/application-tile-task.git) :
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+```bash
 
-- Configure the top-level `parserOptions` property like this:
+git clone https://github.com/Larkgronick/application-tile-task.git
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- установить зависимости в папке проекта:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+
+npm i
+
+```
+
+- выполнить команду `npm run dev` для запуска локального сервера
+- развернутое приложение будет доступно по адресу: http://localhost:5173/
+
+## Тестирования поведения и присылаемых значений
+
+Список присылаемых значений находится в файле **applicationData.json** в корневой папке **public**.
+
+После изменения значений полей и сохранения данных JSON-объекта необходимо обновить страницу с развернутым приложением для отображения с учетом обновленных данных
